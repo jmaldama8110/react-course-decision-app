@@ -1,0 +1,282 @@
+
+Re Proceso de reestructuras en sistemas
+
+-> 26 de marzo 2020, se tuvo una primera reunion para acordar la implementación
+de reestructuras, tanto en procesos como en sistemas. En resumen, se acordo lo siguiente:
+
+Objetivo: Preparar el sistema y políticas que permitan la reestructuración o prórroga de
+pagos de un crédito.
+
+- Dirigido a cliente activos vigentes sin atasos
+- Renovaciones se hará (previa a la reestructura)
+- Comunicacion institucional a las sucursales
+- Se hará un requerimiento
+
+->28 de marzo, se elaboró un formulario para formalizar la solictud de reestructura.
+Es decir, habrá de por medio un acuerdo con el grupo.¿Era necesario este acuerdo?
+La evidencia de lo ocurrido, indica que sí, era necesario -
+
+Ese mismo dia, se distribuye el comunicado a la red comercial:
+
+Cito el comunicado:
+
+"Si tu crédito esta activo, y has cumplido tu compromiso de pago al dia, CONSERVA te apoya
+dandote un periodo de hasta 12 semanas para activar nuevamente tus pagos.."
+
+Ese mismo dia, se confirma lo siguiente:
+
+De acuerdo a lo planteado hoy en dia por la tarde,  sobre la renovacion de los grupos,
+no se cambiara nada en contrato, unicamante el perido de gracia debera estar
+contemplado o reflejado ( sin interes)  en la tabla de amortizacion y/o plan de pagos,
+con eso basta y evitamos mas requerimientos en sistema.... 
+
+En tanto, en el equipo de TI, analizamos el escenario bajo URGENCIA:
+Se contacto al equipo externo para implementar las reestructuras en el HF.
+El proceso se realizó, y fue entonces que la presentación de la funcionalidad fue rechazada
+por la direccion comercial, al argumentar que este proceso debia ser "por lote"
+
+Cito:
+"Permitir que el proceso se pueda realizar por Lotes. Esto es permitir que los encargados de
+realizar este proceso, puedan enviar una solicitud de prórroga, para posteriormente ejecutar
+el proceso de forma masiva. Todo lo anterior fijando fechas para su ejecución. Permitir que
+posterior a este proceso de prórroga, el sistema sea capaz de condonar.
+Esto debido a posibles situaciones que puedan presentarse.."
+
+Es aqui donde empezaron los problemas, por dos razones:
+
+1. Antes de aplicar la reestructura, no se aplicaron a la cartera vigente los pagos pendientes
+del mes de Abril. Existía una bolsa de más de 1 millon de pesos pendientes de los dias 28 y 29
+los cuales, por simple lógica, deberían de aplicarse a los contratos PREVIA la reestructura.
+Esto no se realizo, y se nos hizo llegar la lista, siguiendo indicacines de la direccion comercial.
+Se aplico tal cual.
+ 
+El 3 de abril se tuvo una reunion con la direccion de finanzas para determinar una estrategia
+de registro de la reestructuracion y como se llevaría en los estados financieros.
+
+Aqui se acordaron varios puntos importantes:
+1- Aplicar un finiquito "virtual" en HF, generar un nuevo plan, en funcion de saldo de capital
+OJO: asumiendo que los grupos a reestructurar habrían de estar al día y sin atrasos
+2- Llevar el nuevo registro del plazo reestructurado en cuentas separadas de cartera reestruturado
+separando por ende capital, interes e iva
+3- El resultado, hubo un acuerdo general, mas no se detallaron algunos escenarios
+
+Cito el documentos de las CNBV
+
+"Los créditos con pagos periódicos de principal e intereses, que sean objeto de reestructuración
+o renovación, podrán considerarse como vigentes al momento en que se lleve a cabo dicho
+acto, sin que les resulten aplicables los requisitos establecidos en los párrafos 67 y 69 del Criterio
+B-4, según sea el caso, consistentes en:
+
+No habiendo transcurrido al menos el 80% del plazo original del crédito, cuando el
+acreditado hubiere cubierto:
+
+a) La totalidad de los intereses devengados,
+
+b) El principal del monto original del crédito, que a la fecha de la renovación o
+reestructuración debió haber sido cubierto, y
+c) no se haya ampliado el periodo de gracia.
+ii. Durante el transcurso del 20% final del plazo original del crédito, cuando el acreditado
+hubiere:
+    a) liquidado la totalidad de los intereses devengados;
+    b) cubierto la totalidad del monto original del crédito que a la fecha de renovación o
+    reestructuración debió haber sido cubierto, y
+    c) cubierto el 60% del monto original del crédito..."
+
+El 10 de abril se comparte el manual para efectuar las reestructuras en el sistema, evaluando
+cada caso correspondiente.
+
+Por la presion, se ejecutó el script para realizar la reestructura de manera masiva..
+
+Del día 10 al día 14 de abril, se sostuvieron varias discusiones y debates entre
+TI, Comercial y Juridico.
+
+Se explica que, no se había llegado aún al acuerdo de cuales eran los casos a reestructurar
+Durante la reunion con el DG y el equipo de subdirectores, fue cuando la argumentación frente
+a la direccion general se cuestinó que los casos a reestructurar estaban siendo entorpecidos
+por mi persona, dado que NUNCA estuve de acuerdo en los siguientes puntos:
+
+1. Realizar la aplicación de reestructuras de forma masiva (sin consultar a las socias)
+2. Aprovechar la sitación para deliberadamente esconder cartera vencida que no fue causa de la 
+contigencia
+3. No emplear el mecanismo institucional establecido: mesa de control independiente,
+prevención del riesgo, supervisión de auditoría, comité de crédito de sucursal
+
+Finalmente, mis colegas directores dieron su aprobación y en vista de la amonestación
+del director general a mi persona, aplicamos el proceso tal como lo insistió la direccion
+comercial, repito, sin evaluar a detalle la magnitud de la operación.
+
+-> 16 de Abril, se envia la lista con 4,500+ grupos a reestructurar
+
+-> Sabado 18 de abril, se aplican las reestructuras en entorno de pruebas para su validacion
+-> Se modificaron reportes para que las sucursales validaran los resultados
+
+->24 de abril, se notifica que se realicen las validaciones a las reestructuras para 
+que esta sean apilcadas a producción. Asi se procedió sin ningun comentario de la 
+red comercial.
+
+->Ya entrado Mayo.
+
+Se detectaron diferencias en las cuotas nuevas (reestructas) del plan original
+
+Ahi nos percatamos de que eran numerosos casos de grupos que venian con pagos irregulares que
+habian pagado por adelantado o que venian con problemas de morosidad
+
+-> 07 Mayo, cartera envia un correo pidieron aclaraciones sobre pagos a contratos reestructurados..
+"¿Vencimientos en Julio?, si este grupo ya estaba por renovar!" reclaman los gerentes de sucursal
+
+->08 de Mayo
+Empiezan a reportar detalles los gerentes de sucursales (bochil, chiapa de corzo, etc) que 
+muchos de sus grupos habrian de finalizar, pero no es posible porque se reestructuraron
+
+->13 de Mayo
+Se empiezan a reportar los  problemas con el cierre, es ahi donde nos percatamos de la
+falta de aplicación de pagos en Abril, no se pueden aplicar pagos de grupos cuyos
+contratos se mandaron a reestructura
+
+Mismo día, se confirma el empantamiento de los pagos por haberse reestructurado aun cuando
+los grupos habrían de continuar sus plazos de manera normal
+
+Para solventar la falta de un cierre, la direccion comercial solicita levantar el ambiente
+de paralelo para que ahi se efectúen los pagos pendientes por aplicar (antes de la reestructura)
+
+->17 de Mayo, se aplica el soporte a los grupos de bono al 1%
+
+20-> mayo, se realiza una reunion urgente para tratar el tema
+
+El director comercial propone "revertir por completo" la reestructura y llevarlo
+en paralelo en pruebas. Se envia un minuta con los acuerdos para dar solución al problema
+
+El director comercial envia una propuesta de cronograma para lo denominado,
+"reproceso" el cual implicaba lo siguiente:
+
+1. Borrar operaciones de 30 dias (28 Abril al 28 de Mayo) - TI reestablece un respaldo al 28/04
+2. Ingresar de forma manual, dia a dia la operación
+3. Aplicar nuevamente las reestructuras (bloque 1)
+4. Cerrar el mes de Abril
+5. Aplicar nuevo bloque de reestructuras
+6. Conciliar estados financieros de Abril
+7. Reprocesar los cierres diarios de los 30 dias
+8. Reprocesar los cierres diarios de cada uno de los 30 dias
+
+20-> Se establece detener produccion durante los dias 
+
+HASTA AQUI LA RELATORÍA
+
+En mi posición de director de TI he extralimitado mis facultades y he emitido juicios 
+sobre la forma como se ha llevado la operación institucional, sobre la que no he estado
+de acuerdo. Acepto haber cometido errores en mi conducta por prejuicios propios de 
+cualquier ser humano y haber sido inclusive ofesivo en mis formas en perjuicio de mis colegas.
+Por ello me disculpo sinceramente.
+
+Sin embargo, mi dedicación a Conserva ha sido por él bien de la misma. Nunca he actuado con dolo
+y siempre he sido muy crítico cuando no estoy de acuerdo en las decisiones. Intento siempre
+ser lo mas profesional posible y para ello estoy en constante preparación. Los contrapesos como en 
+cualquier empresa son buenos ya que propician la autocrítica y aportan detalles no visualizadas
+en un principio.
+
+Primero, tomé la decision de reestablecer los sistemas de cartera, pero no bajo el enfoque
+propuesto de "BORRON Y CUENTA NUEVA". Sería improductivo explicar los detalles, pero si puedo
+darles un dato preciso: en 2017, un problema de seguridad ocasiono la pérdida de 1 día y medio
+de operaciones. Entre renovaciones, pagos, emisiones de ordenes
+de pago, cancelaciones, reportes a circulo, etc. etc. Con el apoyo de las analista de sucursal,
+la recuperación de esta situación tomó una semana completa, incluyendo fines de semana.
+Recuperar 30 días de operación no solo era una labor practicamente imposible, sino además
+se debe sumar el entorno actual, que si bien el volumen de operación es menor, no es el mismo
+nivel de trabajo para una auxiliar desde casa, y sin un ambiente adecuado.
+
+Me opuse a realizar el proceso de reestructuras de manera abrupta, como se realizó.
+No encuentro el sentido de, no pactar un nuevo trato con el cliente,
+pero tener el beneficio de posponer sus comprosos con la empresa.
+Tener un compromiso de pago continuo con Conserva, y de pronto,
+te digo que no, que tienes que pagar hasta dentro de 2 meses
+
+QUE HICIMOS
+
+- Revertir toda la aplicación de reestructuras en HF
+- Dejar intacta la operación de los 30 días a la fecha (asi, no tener que recapturar)
+- Aplicar pagos pendiente de abril
+- Trasladar la reestructura al nuevo sistema
+- Realizar conciliación de los dias 28 y 29 de Abril (con reestructuras)
+- Cierre de mes Abril
+- Habilitar pagos de HF de Mayo
+- Habilitar configuracion de contabilidad en nuevo sistema
+
+En síntesis, resumo lo acontencido:
+
+En pleno inicio de la contingencia sanitaria, se determina efectuar un programa de 
+reestructuras de la cartera de la empresa, visto por todos lados como un beneficio
+a nuestras socias. Inclusive se genera un comunicado al equipo de campo, con el fin
+de ofrecer condiciones especiales ante la situación económica en deterioro
+
+Despues de varias reuniones técnicas, de revision, depuración, se acuerda
+que en base a una lista de contratos determinada por la dirección Comercial
+se correría un proceso "interno" en el sistema para que se vieran reflejados
+los nuevos plazos de pago
+
+La lista original incluyó 4,588 contratos, de los 8,300 de toda la cartera, es decir
+casi el 50% de la totalidad. Este paso se llego a concretar hasta finales de Abril, 
+dado que el equipo de TI con la ayuda de los asesores externos, metieran mano a los 
+aplicativos HF que permitieran soportar dichos procesos. Además de ello, la lista 
+incluía un monto significativo de créditos que presentaban atrasos por cerca de 14
+millones de pesos.
+
+En la aplicación de este proceso, se omitieron situaciones no previstas, 
+las cuales llevaron al punto de no poder actualizar la información de 
+la recuperación de la cartera que fue sujeto de reestructura.
+El motivo principal: la recuperación de fichas en semanas proximas
+se pospusieran para la 1a semana Julio. Por ende, también los accesorios
+que lo conforman: capital, intereses e iva.Dado que en el comportamiento de cualquier
+crédito, no puedo aplicar un pago a intereses, si estos nos han sido devengados, y
+así lo dictamino el área normativa. De aplicarse de manera correcta, los ingresos de 
+Conserva se habrían visto severamente afectados, al aplicar pagos anticipados que 
+matarían el capital, cuando aun se habrían tenido pendientes intereses devengados
+no pagados al momento de la reestructura.
+
+Como es de esperarse (y así lo señalé), la realidad fue otra por completo distinta.
+Un muy importante de clientes no requerían posponer sus pagos, sino que al contrario,
+requerían renovar inclusive de manera anticipada, sabiendo de la situación se 
+aproximaba, resultaría en menores ingresos y por ende, dificultades para pagar
+
+No solo eso, me percaté no solamente de que las socias no sabian de ello. Ni siquiera
+los mismos gerentes de sucursal tenían conocimiento de este proceso.
+
+Llegando al 20 de Mayo, ya que aun no se tenía forma de aplicar pagos a contratos
+reestructurados, determinamos en conjunto con las demás direcciones realizar una reversa
+total de la reestructura, tomando la idea del director comercial de "BORRON Y CUENTA NUEVA"
+Y asi "reconstruir" la información dia a dia, teniendo al equipo de auxiliares de sucursales
+ingresando toda la información de 30 días de operación.
+
+Dada mi facultad, y en aras de lo que es mejor para la institución, determinamos con 
+el equipo técnico de sistema, descatar la solución propuesta y emplear una propia 
+con base en nuestro criterio. Cito texto arriba.
+
+Lo que se logró:
+
+1. No se tuvo que recapturar toda la operación de Mayo
+2. Cierre de Abril
+3. Facilitar el cierre de Mayo
+4. Llevar las reestructuras separadas y reclasificadas (nuevo sistema)
+
+En proceso:
+
+1. Aplicar pagos Mayo (cartera)
+2. Cierre de Mayo
+3. Reconstruir cierres diarios (a peticion direccion comercial)
+4. Reportes de pagos liquidaciones,cubetas, etc.
+
+Que sigue:
+
+1. Cierre de Mayo
+2. Reportes y mas reportes
+3. Individualización?
+4. Nuevos productos?
+
+
+
+
+
+
+
+
+
+
