@@ -1,28 +1,26 @@
 
 class DecisionApp extends React.Component {
 
+    /// CONSTRUCTOR
     constructor(props){
         super(props);
         this.onBorrarOpciones = this.onBorrarOpciones.bind(this);
         this.onElegirUna = this.onElegirUna.bind(this);
         this.onAgregarOpcion = this.onAgregarOpcion.bind(this);
-        this.state = {
-            options: []
+        this.onBorrarOpcion = this.onBorrarOpcion.bind(this);
 
-        };
+        this.state = { options: [] };
     }
-
+    ///////////////////// FUNCIONES
     onBorrarOpciones () {
-        this.setState( ()=>{
-            return {
-                options: []
-            };
-
-        });
-
-
+        this.setState( ()=> ( { options: [] } )  );
     }
+    onBorrarOpcion (opcion) {
 
+        this.setState( (prevState) => ({
+            options: prevState.options.filter( (item) =>  item !== opcion  )
+        }));
+    }
     onAgregarOpcion(opcion){
 
         if( !opcion ){
@@ -31,13 +29,7 @@ class DecisionApp extends React.Component {
             return 'Ya existe el elemento en el arreglo...'
         }
 
-        this.setState( (prevState) =>{  
-            return {
-                options: prevState.options.concat(opcion)
-            };
-        })
-
-
+        this.setState( (prevState) => ( {  options: prevState.options.concat(opcion)  } ) );
     }
 
     onElegirUna() {
@@ -45,37 +37,74 @@ class DecisionApp extends React.Component {
         alert( this.state.options[ rand ] );
 
     }
+    ///////////////// Metodos de LIFE CYCLE ////////////////
+    componentDidMount(){
 
+        try {
+            const json = localStorage.getItem('options');
+            const options = JSON.parse(json);        
+
+            if( options ){
+                this.setState( () => ({ options }) );
+            }
+                   
+        }
+        catch (e){
+            // Error al intentar parsear JSON
+            // no hacer nada
+        }
+        
+
+    }
+    componentDidUpdate(prevProps, prevState){
+
+        //Guarda la lista de manera local, unicamente si existen cambios en el arreglo
+        if( prevState.options.length !== this.state.options.length ){
+            const json = JSON.stringify( this.state.options);
+            localStorage.setItem('options',json);
+
+        }
+    }
+    componeneWillUnmount() {
+        console.log('Component Will Unmount')
+    }
+    ////////////////////////////////////////////////////////
+
+    
+    ////////////////////////////////////////////////////////////////////////////////
+    ///////RENDER DECISION APP contiene todos los componentes//////////
     render() {
-        const titulo = "Decisiones!";
-        const subtitulo = "Deja que elija!"
+        const subtitulo = "deja que la computadora decida por ti!"
 
         return (
             <div>
-                <Header titulo={ titulo } subtitulo={ subtitulo }/>
+                <Header subtitulo={subtitulo}/>
                 <Action     tieneOpciones={ this.state.options.length > 0 }
                             handleElegirUnaProp={this.onElegirUna}
                 />
                 <Options    opciones={ this.state.options } 
                             handleBorrarOpcionesProp={this.onBorrarOpciones}
+                            handleBorrarOpcionProp={this.onBorrarOpcion}
                 />
                 <AddOption handleAgregarOpcionProp={this.onAgregarOpcion}/>
             </div>
 
         );
-    }
+    }///////////////////////////////////////////////////////////////
+
 }
 
 const Header = (props) =>{
-
     return (
         <div>
             <h1>{props.titulo}</h1>
-            <h2>{props.subtitulo}</h2>
+            {props.subtitulo && <h2>{props.subtitulo}</h2> } 
         </div>
     );
-
 }
+ Header.defaultProps = {
+    titulo: 'Decisiones!'
+ };
 
 const Action = (props) => {
     return (
@@ -85,29 +114,35 @@ const Action = (props) => {
             </button>
         </div>  
         );
-
-    
 }
 
 
-class Options extends React.Component {
+const Options = (props) => {
 
-    render() {
         return (
             <div>
-            <button onClick={ this.props.handleBorrarOpcionesProp }>Eliminar Todas</button>
+            <button onClick={props.handleBorrarOpcionesProp }>Eliminar Todas</button>
+            {props.opciones.length === 0 && <p>Ingresa una opcion...</p>}
             {
-                    this.props.opciones.map(  (op) => <Option key={op} optionText={op} />)
+                    props.opciones.map(  (op) =>   
+                    <Option key={op}
+                            optionText={op}
+                            handleBorrarOpcionProp={props.handleBorrarOpcionProp}                                
+                                                         />)
                 }
             </div>
         );
-    }
 
 }
 
 const Option = (props) =>{
     return (
-        <div>{props.optionText}</div>
+        <div>
+            {props.optionText}
+            <button onClick= { ()=>{ props.handleBorrarOpcionProp(props.optionText) } }>
+            Eliminar
+            </button>
+        </div>
     );
 
 }
@@ -132,11 +167,12 @@ class AddOption extends React.Component {
         const valor = e.target.elements.descripcion.value.trim();
         const error = this.props.handleAgregarOpcionProp(valor);
         e.target.elements.descripcion.value = '';
-        this.setState( ()=>{
-            return { error };
-        })
+        
+        this.setState( ()=> ( { error } ) );
+
 
     }
+
 
     render() {
 
@@ -157,4 +193,4 @@ class AddOption extends React.Component {
 }
 
 
-ReactDOM.render( <DecisionApp />, document.getElementById('app') )
+ReactDOM.render( <DecisionApp  />, document.getElementById('app') )
