@@ -22,7 +22,7 @@
     padding-left: $size_peque;
 }
 
-/// aplica cuando el tamaño es menor de la variable
+/// aplica cuando el tamaño indica vista escritorio
 @media (min-width: $desktop_breakpoint){
     .add-option-form {
         flex-direction: row;
