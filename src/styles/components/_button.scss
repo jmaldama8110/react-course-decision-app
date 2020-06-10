@@ -1,0 +1,47 @@
+
+// Boton grande "que hacer"
+.big_button {
+    background: $purpura;
+    border: none;
+    border-bottom: 0.6rem solid darken($purpura, 10%);
+    color: white;
+    font-weight: bold;
+    font-size: $size_grande;
+
+    margin-bottom: $size_peque;
+    padding: 2.4rem;
+    width: 100%;
+
+}
+
+.big_button:disabled{
+    opacity: 0.5;
+}
+
+
+// Boton normal purpursa
+.button {
+    background: $purpura;
+    border: none;
+    border-bottom: .3rem solid darken($purpura,10%);
+    color: white;
+    font-weight: 500;
+    padding: $size_peque;
+}
+
+.button--link {
+    background: none;
+    border: none;
+    color: $off_white;
+    padding: 0;
+}
+
+/// aplica cuando el tamaño indica vista escritorio
+@media (min-width: $desktop_breakpoint){
+
+    .big_button {
+        margin-bottom: $size_extra;
+
+    }
+    
+}

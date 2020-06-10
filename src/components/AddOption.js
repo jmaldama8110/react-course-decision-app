@@ -15,17 +15,16 @@ export default class AddOption extends React.Component {
         e.target.elements.descripcion.value = '';
         
         this.setState( ()=> ( { error } ) );
-
     }
 
     render() {
         return (
 
             <div>
-                {this.state.error && <p>{this.state.error}</p>}
-                <form onSubmit={this.onSubmitAddOption} >
-                    <input type="text" name="descripcion" placeholder="Ingresa algo aqui"></input>
-                    <button>Enviar</button>
+                {this.state.error && <p className="add-option-error">{this.state.error}</p>}
+                <form className="add-option-form" onSubmit={this.onSubmitAddOption} >
+                    <input className="add-option-input" type="text" name="descripcion" placeholder="Ingresa algo aqui"></input>
+                    <button className="button">Enviar</button>
                 </form>
             </div>
 

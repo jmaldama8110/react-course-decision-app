@@ -1,0 +1,28 @@
+.header {
+    background: $off_black;
+    color:  white;
+    margin-bottom: $size_peque;
+    padding: $size_peque 0;
+
+}
+
+/// BEM block element modifier
+.header__titulo {
+    font-size: $size_grande;
+    margin: 0;
+}
+
+.header__subtitulo {
+    color: $off_white;
+    font-size: $size_mediana;
+    font-weight: 500;
+    margin: 0;
+}
+
+@media (min-width: $desktop_breakpoint){
+    .header {
+        margin-bottom: $size_extra;
+        padding: $size_mediana 0;
+    }
+
+}

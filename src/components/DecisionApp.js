@@ -4,11 +4,13 @@ import AddOption from './AddOption';
 import Action from './Action';
 import Header from './Header';
 import Options from './Options';
+import OptionModal from './OptionModal';
 
 export default class DecisionApp extends React.Component {
     /////////////////// propiedades ////////////////
     state = {
-        options: []
+        options: [],
+        selectedOption: undefined
     };
     ///////// inicializar por medio del archivo .babelrc - transform-class-properties
     ////////////////////////
@@ -25,8 +27,8 @@ export default class DecisionApp extends React.Component {
             options: prevState.options.filter( (item) =>  item !== opcion  )
         }));
     }
-    onAgregarOpcion = (opcion) => {
 
+    onAgregarOpcion = (opcion) => {
         if( !opcion ){
             return 'Ingresa un valor valido...';
         }else if( this.state.options.indexOf(opcion) > -1 ){
@@ -38,9 +40,16 @@ export default class DecisionApp extends React.Component {
 
     onElegirUna = () => {
         const rand = Math.floor( Math.random()* (this.state.options.length) );
-        alert( this.state.options[ rand ] );
+        
+        this.setState( ()=> ( { selectedOption: this.state.options[rand] }  ) )
+        // alert( this.state.options[ rand ] );
 
     }
+
+    onModalOK = () =>{
+            this.setState( ()=> ({selectedOption: undefined } ) );
+    }
+
     ///////////////// Metodos de LIFE CYCLE ////////////////
     componentDidMount(){
 
@@ -73,9 +82,6 @@ export default class DecisionApp extends React.Component {
         console.log('Component Will Unmount')
     }
     ////////////////////////////////////////////////////////
-
-    
-    ////////////////////////////////////////////////////////////////////////////////
     ///////RENDER DECISION APP contiene todos los componentes//////////
     render() {
         const subtitulo = "deja que la computadora decida por ti!"
@@ -83,14 +89,23 @@ export default class DecisionApp extends React.Component {
         return (
             <div>
                 <Header subtitulo={subtitulo}/>
-                <Action     tieneOpciones={ this.state.options.length > 0 }
-                            handleElegirUnaProp={this.onElegirUna}
+                <div className="container">
+                    <Action     tieneOpciones={ this.state.options.length > 0 }
+                                handleElegirUnaProp={this.onElegirUna}
+                    />
+                    <div className="widget">
+                        <Options    opciones={ this.state.options } 
+                                    handleBorrarOpcionesProp={this.onBorrarOpciones}
+                                    handleBorrarOpcionProp={this.onBorrarOpcion}
+                        />
+                        <AddOption handleAgregarOpcionProp={this.onAgregarOpcion}/>
+                    </div>
+                
+                </div>
+
+                <OptionModal    selectedOptionProp={this.state.selectedOption}
+                                onModalOKProp={this.onModalOK}
                 />
-                <Options    opciones={ this.state.options } 
-                            handleBorrarOpcionesProp={this.onBorrarOpciones}
-                            handleBorrarOpcionProp={this.onBorrarOpcion}
-                />
-                <AddOption handleAgregarOpcionProp={this.onAgregarOpcion}/>
             </div>
 
         );

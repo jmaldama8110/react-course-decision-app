@@ -1,0 +1,34 @@
+.add-option-error {
+
+    color: $off_white;
+    font-style: italic;
+    margin: $size_mediana 0 0 0;
+    padding: 0 $size_mediana;
+}
+
+.add-option-form {
+    display: flex;
+    flex-direction: column;
+    padding: $size_mediana;
+}
+
+.add-option-input {
+    background: $azul_fondo;
+    flex-grow: 1;
+    color: $off_white;
+    border-bottom: 0.3rem solid darken($azul_fondo,10%);
+    margin: 0 0 $size_peque 0;
+    //margin-right: $size_mediana;
+    padding-left: $size_peque;
+}
+
+/// aplica cuando el tamaño es menor de la variable
+@media (min-width: $desktop_breakpoint){
+    .add-option-form {
+        flex-direction: row;
+        
+    }
+    .add-option-input {
+        margin: 0 $size_peque 0 0;
+    }
+}
